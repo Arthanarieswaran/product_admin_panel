@@ -92,9 +92,12 @@ class ProductController extends Controller
 
 
     public function delete($id){
-        $deletedata=Product::find($id);
+        $deletedata=Product::where($id);
         $deletedata->delete();
-        $deletedata->save();
-        return redirect('/dashboard');
+        return redirect('/dashboard')
+        ->withSuccess('Item updated');
+
+        $user=User::find(1);
+$user->delete(); //returns true/false
     }
 }
